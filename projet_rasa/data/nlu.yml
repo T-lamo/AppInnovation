@@ -1,0 +1,146 @@
+version: "3.1"
+nlu:
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+    - How are you?
+    - Hey! How are you?
+- intent: goodbye
+  examples: |
+    - cu
+    - good by
+    - cee you later
+    - good night
+    - bye
+    - goodbye
+    - have a nice day
+    - see you around
+    - bye bye
+    - see you later
+- intent: affirm
+  examples: |
+    - yes
+    - y
+    - indeed
+    - of course
+    - that sounds good
+    - correct
+- intent: deny
+  examples: |
+    - no
+    - n
+    - never
+    - I don't think so
+    - don't like that
+    - no way
+    - not really
+- intent: mood_great
+  examples: |
+    - perfect
+    - great
+    - amazing
+    - feeling like a king
+    - wonderful
+    - I am feeling very good
+    - I am great
+    - I am amazing
+    - I am going to save the world
+    - super stoked
+    - extremely good
+    - so so perfect
+    - so good
+    - so perfect
+    - fine
+- intent: mood_unhappy
+  examples: |
+    - my day was horrible
+    - I am sad
+    - I don't feel very well
+    - I am disappointed
+    - super sad
+    - I'm so sad
+    - sad
+    - very sad
+    - unhappy
+    - not good
+    - not very good
+    - extremly sad
+    - so saad
+    - so sad
+- intent: bot_challenge
+  examples: |
+    - are you a bot?
+    - are you a human?
+    - am I talking to a bot?
+    - am I talking to a human?
+    - How are you?
+- intent: thanks
+  examples: | 
+    - thank you
+    - thanks
+    - very many thanks
+    - thanks for your help.
+    - super
+    - unbelievable
+    - your are amazing
+
+- intent: ask_schedule
+  examples: |
+    - what is next?
+    - can you tell me my schedule?
+    - schedule?
+    - what's coming next?
+    - what do I have now?
+    - what is the schedule?
+    - class is at what time today?
+    - is there class today?
+
+- intent: give_section
+  examples: |
+    - my section is [M1]{"entity": "section"}
+    - my section is [M2]{"entity": "section"}
+    - i am in [M1]{"entity": "section"}
+    - i am in [M2]{"entity": "section"}
+    - [M1]{"entity": "section"}
+    - [M2]{"entity": "section"}
+    - [M1]{"entity": "section"} is my section
+    - [M2]{"entity": "section"} is my section
+    - i am in [master 1]{"entity": "section"}
+    - i am in [first year of master]{"entity": "section"}
+    - i am in [master 2]{"entity": "section"}
+    - i am in [second year of master]{"entity": "section"}
+    
+- intent: give_group
+  examples: |
+    - my group is [ALTERNANT]{"entity": "group"}
+    - my group is [CLASSIC]{"entity": "group"}
+    - i am in [ALTERNANT]{"entity": "group"}
+    - i am in [CLASSIC]{"entity": "group"}
+    - [ALTERNANT]{"entity": "group"}
+    - [CLASSIC]{"entity": "group"}
+    - [ALTERNANT]{"entity": "group"} is my group
+    - [CLASSIC]{"entity": "group"} is my group
+
+- synonym: M1
+  examples: |
+    - master 1
+    - master1
+    - first year of master
+    
+- synonym: M2
+  examples: |
+    - master 2
+    - master2
+    - second year of master  

@@ -1,0 +1,63 @@
+
+version: "3.1"
+
+stories:
+
+- story: happy path 1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_great
+  - action: utter_happy
+  - intent: ask_schedule
+  - action: action_give_schedule 
+  - action: utter_ask_for_other_question
+  - intent: deny
+  - action: utter_goodbye
+
+- story: happy path 2
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_great
+  - action: utter_happy
+  - intent: ask_schedule
+  - action: action_give_schedule 
+  - action: utter_ask_for_other_question
+  - intent: affirm
+  - action: utter_goodbye
+
+- story: happy path 3
+  steps:
+  - intent: ask_schedule
+  - action: utter_ask_section
+  - intent: give_section
+  - slot_was_set:
+    - section: "M1"
+  - action: utter_ask_group
+  - intent: give_group
+  - slot_was_set:
+    - group: "ALTERNANT"
+  - action: action_give_schedule 
+ 
+
+- story: sad path 1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_happy
+
+- story: sad path 2
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: deny
+  - action: utter_goodbye
+
