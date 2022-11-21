@@ -15,10 +15,18 @@ intents:
 - give_group:
     use_entities:
       - group
+- give_date:
+    use_entities:
+      - month_days
+      - months
+      - years
 
 entities:
 - section
 - group
+- years
+- months
+- month_days
 
 slots:
   section:
@@ -33,31 +41,53 @@ slots:
     mappings:
     - type: from_entity
       entity: group
+      
+  month_days:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: month_days
+  
+  months:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: months
+  
+  years:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: years
 
 
 responses:
   utter_greet:
-  - text: Hey! How are you?
+  - text: Salut! Comment ça va?
   utter_cheer_up:
   - text: 'Here is something to cheer you up:'
     image: https://i.imgur.com/nGF1K8f.jpg
   utter_did_that_help:
-  - text: Did that help you?
+  - text: Ça vous a t'il aider?
   utter_happy:
   - text: Great, carry on!
   utter_goodbye:
-  - text: Bye
+  - text: Au revoir
   utter_iamabot:
-  - text: I am a bot, powered by Rasa.
+  - text: Je suis un robot, je suis là pour vous aider.
   utter_ask_section:
-  - text: What is your section?
+  - text: Quelle est ta section?
   utter_ask_group:
-  - text: What is your group?
+  - text: Quel est ton groupe?
   utter_ask_for_other_question:
-  - text: Do you have any other questions?
+  - text: Avez vous d'autre question?
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
 
 actions:
 - action_give_schedule
+- action_give_empty_class

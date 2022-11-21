@@ -3,144 +3,200 @@ nlu:
 - intent: greet
   examples: |
     - hey
-    - hello
-    - hi
-    - hello there
-    - good morning
-    - good evening
-    - moin
-    - hey there
-    - let's go
-    - hey dude
-    - goodmorning
-    - goodevening
-    - good afternoon
-    - How are you?
-    - Hey! How are you?
+    - salut
+    - bonjour
+    - bonsoir
+    - ça va?
+    - salut, ça va?
+    - comment ça va?
+    
 - intent: goodbye
   examples: |
-    - cu
-    - good by
-    - cee you later
-    - good night
+    - au revoir
+    - à plus
+    - à la prochaine
+    - une prochaine fois
     - bye
-    - goodbye
-    - have a nice day
-    - see you around
-    - bye bye
-    - see you later
+    - à tout à l’heure
+    - bonne nuit
+    - tchao
+    - à plus tard
+    - adieu
+    - à toute
+    - à tout de suite
+    - bonne journée
+    - bonne soirée
+    - passe une bonne journée
+    - on se voit
+
 - intent: affirm
   examples: |
-    - yes
-    - y
-    - indeed
-    - of course
-    - that sounds good
+    - bien
+    - top
+    - oui
+    - justement
+    - bien sûr
+    - biensûr
+    - évidemment
+    - c'est une bonne idée
     - correct
+    - c'est correct
+    - ça marche
+
 - intent: deny
   examples: |
+    - non
     - no
-    - n
-    - never
-    - I don't think so
-    - don't like that
-    - no way
-    - not really
+    - jamais
+    - je ne crois pas
+    - je n'aime pas ça
+    - ça ne marche pas
+    - pas vraiment
+    - pas du tout
 - intent: mood_great
   examples: |
-    - perfect
-    - great
-    - amazing
-    - feeling like a king
-    - wonderful
-    - I am feeling very good
-    - I am great
-    - I am amazing
-    - I am going to save the world
-    - super stoked
-    - extremely good
-    - so so perfect
-    - so good
-    - so perfect
-    - fine
+    - parfait
+    - je suis bien
+    - je vais bien
+    - merveilleux
+    - impeccable
+    - en pleine forme
+    - pas mal
+    - je vais fort bien
+    - au top
+    - je me sens bien
+    - je suis en forme
+    - je suis en pleine forme
+    - ça va très bien
+    - très bon
+    - nickel
+    
 - intent: mood_unhappy
   examples: |
-    - my day was horrible
-    - I am sad
-    - I don't feel very well
-    - I am disappointed
-    - super sad
-    - I'm so sad
-    - sad
-    - very sad
-    - unhappy
-    - not good
-    - not very good
-    - extremly sad
-    - so saad
-    - so sad
+    - ma journée était horible 
+    - je suis triste
+    - Je ne me sens pas très bien
+    - je suis déçu(e)
+    - super triste
+    - Je suis tellement triste
+    - triste
+    - très triste
+    - malheureux
+    - pas bien
+    - pas très bien
+    - extrêmement triste
+    - Comme ci, comme ça
 - intent: bot_challenge
   examples: |
-    - are you a bot?
-    - are you a human?
-    - am I talking to a bot?
-    - am I talking to a human?
-    - How are you?
+    - êtes-vous un robot ?
+    - Êtes-vous un humain ?
+    - est-ce que je parle à un robot ?
+    - est-ce que je parle à un humain ?
+
 - intent: thanks
   examples: | 
-    - thank you
-    - thanks
-    - very many thanks
-    - thanks for your help.
+    - merci
+    - très grand merci
+    - merci pour votre aide.
     - super
-    - unbelievable
-    - your are amazing
+    - incroyable
+    - vous êtes incroyable
+    - merci de ton aide
+    - merci à vous
+    - merci à toi
 
 - intent: ask_schedule
   examples: |
-    - what is next?
-    - can you tell me my schedule?
-    - schedule?
-    - what's coming next?
-    - what do I have now?
-    - what is the schedule?
-    - class is at what time today?
-    - is there class today?
+    - pouvez-vous me dire mon emploi du temps ?
+    - emploi du temps ?
+    - qu'est-ce qui vient ensuite ?
+    - qu'est-ce que j'ai maintenant ?
+    - quel est l'emploi du temps ?
+    - quel est l'emploi du temps pour aujourd'hui?
+    - le cours aura lieu à quelle heure aujourd'hui ?
+    - y a-t-il un cours aujourd'hui ?
+    - quelle est la suite ?
+
 
 - intent: give_section
   examples: |
-    - my section is [M1]{"entity": "section"}
-    - my section is [M2]{"entity": "section"}
-    - i am in [M1]{"entity": "section"}
-    - i am in [M2]{"entity": "section"}
+    - ma section est [M1]{"entity": "section"}
+    - ma section est [M2]{"entity": "section"}
+    - je suis en [M1]{"entity": "section"}
+    - je suis en [M2]{"entity": "section"}
     - [M1]{"entity": "section"}
     - [M2]{"entity": "section"}
     - [M1]{"entity": "section"} is my section
     - [M2]{"entity": "section"} is my section
-    - i am in [master 1]{"entity": "section"}
-    - i am in [first year of master]{"entity": "section"}
-    - i am in [master 2]{"entity": "section"}
-    - i am in [second year of master]{"entity": "section"}
+    - je suis en [master 1]{"entity": "section"}
+    - je suis en [première année de master]{"entity": "section"}
+    - je suis en [master 2]{"entity": "section"}
+    - je suis en [deuxième année de master]{"entity": "section"}
     
 - intent: give_group
   examples: |
-    - my group is [ALTERNANT]{"entity": "group"}
-    - my group is [CLASSIC]{"entity": "group"}
-    - i am in [ALTERNANT]{"entity": "group"}
-    - i am in [CLASSIC]{"entity": "group"}
+    - mon groupe est [ALTERNANT]{"entity": "group"}
+    - mon groupe est [CLASSIC]{"entity": "group"}
+    - je suis en [ALTERNANT]{"entity": "group"}
+    - je suis en [CLASSIC]{"entity": "group"}
     - [ALTERNANT]{"entity": "group"}
     - [CLASSIC]{"entity": "group"}
-    - [ALTERNANT]{"entity": "group"} is my group
-    - [CLASSIC]{"entity": "group"} is my group
+    - [ALTERNANT]{"entity": "group"} est mon groupe
+    - [CLASSIC]{"entity": "group"} est mon groupe
+
+- intent: give_date
+  examples: | 
+    - [3]{"entity": "month_days"} [decembre]{"entity": "months"} [2012]{"entity": "years"}
+    - la date est [3]{"entity": "month_days"} [decembre]{"entity": "months"} [2012]{"entity": "years"}
+
 
 - synonym: M1
   examples: |
     - master 1
     - master1
-    - first year of master
+    - première année de master
     
 - synonym: M2
   examples: |
     - master 2
     - master2
-    - second year of master  
+    - deuxième année de master  
+
+- lookup: months
+  examples: |
+    - janvier
+    - fevrier
+    - mars
+    - avril
+    - mai
+    - juin
+    - juillet
+    - aout
+    - septembre
+    - octobre
+    - novembre
+    - decembre
+
+- regex: month_days
+  examples: |
+    - \d{1,2}
+
+- regex: years
+  examples: |
+    - \d{4}
+
+- regex: duration_hours
+  examples: |
+    - \d{1,2}
+
+- regex: duration_hours
+  examples: |
+    - \d{1,2}
+
+- regex: start_hours
+  examples: |
+    - \d{1,2}
+
+- regex: start_minutes
+  examples: |
+    - \d{1,2}

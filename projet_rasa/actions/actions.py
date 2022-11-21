@@ -30,10 +30,29 @@ class ActionGiveSchedule(Action):
         dispatcher.utter_message(text=f'Today you have class at {result[0][4]}')
 
        
-
         return []
     def get_schedule(self,item,data):
         if(item[0]==data[0] and item[1]==data[1]):
             return True
         else: 
             return False
+
+
+
+class ActionGiveEmptyClass(Action):
+
+    def name(self) -> Text:
+        return "action_give_empty_class"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        print("test")
+
+        print("month_days",tracker.get_slot("month_days"))
+        print("month",tracker.get_slot("months"))
+        print("years",tracker.get_slot("years"))
+        dispatcher.utter_message(text=f'Ok')
+
+        return []
+   

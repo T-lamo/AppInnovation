@@ -39,7 +39,11 @@ stories:
   - slot_was_set:
     - group: "ALTERNANT"
   - action: action_give_schedule 
- 
+
+- story: happy path 4
+  steps:
+  - intent: give_date
+  - action: action_give_empty_class
 
 - story: sad path 1
   steps:
