@@ -2,33 +2,12 @@ version: "3.1"
 nlu:
 - intent: greet
   examples: |
-    - hey
-    - hello
-    - hi
-    - hello there
-    - good morning
-    - good evening
-    - moin
-    - hey there
-    - let's go
-    - hey dude
-    - goodmorning
-    - goodevening
-    - good afternoon
-    - How are you?
-    - Hey! How are you?
+    - Bonjour
+    - Salut
 - intent: goodbye
   examples: |
-    - cu
-    - good by
-    - cee you later
-    - good night
-    - bye
-    - goodbye
-    - have a nice day
-    - see you around
-    - bye bye
-    - see you later
+    - au revoir
+    - adieu
 - intent: affirm
   examples: |
     - yes
@@ -98,40 +77,28 @@ nlu:
 
 - intent: ask_schedule
   examples: |
-    - what is next?
-    - can you tell me my schedule?
-    - schedule?
-    - what's coming next?
-    - what do I have now?
-    - what is the schedule?
-    - class is at what time today?
-    - is there class today?
+    - on emplois du temps
+    - emplois du temps
 
 - intent: give_section
   examples: |
-    - my section is [M1]{"entity": "section"}
-    - my section is [M2]{"entity": "section"}
-    - i am in [M1]{"entity": "section"}
-    - i am in [M2]{"entity": "section"}
+    - ma section est [M1]{"entity": "section"}
+    - ma section est [M2]{"entity": "section"}
     - [M1]{"entity": "section"}
     - [M2]{"entity": "section"}
-    - [M1]{"entity": "section"} is my section
-    - [M2]{"entity": "section"} is my section
-    - i am in [master 1]{"entity": "section"}
-    - i am in [first year of master]{"entity": "section"}
-    - i am in [master 2]{"entity": "section"}
-    - i am in [second year of master]{"entity": "section"}
+
     
 - intent: give_group
   examples: |
-    - my group is [ALTERNANT]{"entity": "group"}
-    - my group is [CLASSIC]{"entity": "group"}
-    - i am in [ALTERNANT]{"entity": "group"}
-    - i am in [CLASSIC]{"entity": "group"}
     - [ALTERNANT]{"entity": "group"}
     - [CLASSIC]{"entity": "group"}
-    - [ALTERNANT]{"entity": "group"} is my group
-    - [CLASSIC]{"entity": "group"} is my group
+
+
+- intent: give_hour
+  examples: |
+    - Quel heure il est?
+    - heure
+    - hour
 
 - synonym: M1
   examples: |
@@ -144,3 +111,29 @@ nlu:
     - master 2
     - master2
     - second year of master  
+
+- synonym: CLASSIC
+  examples: |
+    - classique
+    - cla
+
+- synonym: ALTERNANT
+  examples: |
+    - alternant
+    - alt
+
+- intent: ask_class_availlability
+  examples: |
+    - classe disponible
+    - quelles  salles de classe sont disponibles ?
+    - pouvez vous me dire les salle qui sont libres?
+    - y a t il des salles libre?
+
+
+
+- intent: give_date
+  examples: |
+    - je veux la liste des salles qui sont disponibles pour [time]{"entity":"time"}
+    - pour le [time]{"entity":"time"}
+    - la date est [time]{"entity":"time"}
+    - j aimerais avoir une salle disponible pour le [time]{"entity":"time"}

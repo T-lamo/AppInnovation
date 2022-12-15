@@ -27,9 +27,11 @@ class Database(metaclass=DatabaseSingletonMeta):
     def __init__(self):
         self.db = "rasa_demo_db"
         self.user = 'postgres'
-        self.password = 'password'
+        self.password = 'admin'
         self.port = '5432'
         self.host = '127.0.0.1'
+
+        
 
         data = {
             'name': "agenda",
@@ -37,7 +39,7 @@ class Database(metaclass=DatabaseSingletonMeta):
             'values': ('M1', 'classique', 'outils pour apprentis', 'S4', '13:00')
         }
         
-        # self.insert(data)
+        self.insert(data)
 
     def open_connexion(self):
         # establishing the connection
@@ -69,6 +71,20 @@ class Database(metaclass=DatabaseSingletonMeta):
         # Commit your changes in the database
         conn.commit()
         conn.close()
+    
+    def delet_values(self):
+        conn = self.open_connexion()
+        #Setting auto commit false
+        conn.autocommit = True
+        #Creating a cursor object using the cursor() method
+        cursor = conn.cursor()
+        query = "DELETE FROM agenda"
+        # Preparing SQL queries to INSERT a record into the database.
+        print(query)
+        cursor.execute(query)
+        # Commit your changes in the database
+        conn.commit()
+        conn.close()
 
     def get_schedule(self,item,data):
         if(item[0]==data[0] and item[1]==data[1]):
@@ -85,5 +101,28 @@ if __name__ == "__main__":
     result=list(filter(lambda item:Database().get_schedule(item, ("M1","alternant")),Database().select()))
     print(list(map(convert_to_dict, result)))
     print(result)
+    Database().delet_values()
+    data = [{
+            'name': "agenda",
+            'columns':"section, grp, name, room, time",
+            'values': ('M2', 'alternant', 'Middleware', 'S7', '8:30')
+        },
+        {
+            'name': "agenda",
+            'columns':"section, grp, name, room, time",
+            'values': ('M2', 'alternant', 'appli inovation', 'S8', '10:00')
+        },
+        {
+            'name': "agenda",
+            'columns':"section, grp, name, room, time",
+            'values': ('M2', 'alternant', 'data warehouse', 'S3', '13:00')
+        },
+        
+        
+        ]
+    for i in range(len(data)):
+        Database().insert(data=data[i])
+    print("---------------------")
+    print(Database().select())
 
    
