@@ -9,6 +9,9 @@ intents:
 - mood_unhappy
 - thanks
 - ask_schedule
+- give_hour
+- give_date
+- ask_class_availlability
 - give_section:
     use_entities:
       - section
@@ -28,11 +31,7 @@ intents:
 entities:
 - section
 - group
-- years
-- months
-- month_days
-- hours
-- minutes
+- time
 
 slots:
   section:
@@ -47,45 +46,17 @@ slots:
     mappings:
     - type: from_entity
       entity: group
-      
-  month_days:
-    type: text
-    influence_conversation: false
-    mappings:
-    - type: from_entity
-      entity: month_days
   
-  months:
-    type: text
-    influence_conversation: false
+  time:
+    type: any
     mappings:
     - type: from_entity
-      entity: months
-  hours:
-    type: text
-    influence_conversation: false
-    mappings:
-    - type: from_entity
-      entity: hours 
-  
-  minutes:
-    type: text
-    influence_conversation: false
-    mappings:
-    - type: from_entity
-      entity: minutes
-
-  years:
-    type: text
-    influence_conversation: false
-    mappings:
-    - type: from_entity
-      entity: years
+      entity: time
 
 
 responses:
   utter_greet:
-  - text: Salut! Comment ça va?
+  - text: Salut! ça va?
   utter_cheer_up:
   - text: 'Here is something to cheer you up:'
     image: https://i.imgur.com/nGF1K8f.jpg
@@ -98,22 +69,18 @@ responses:
   utter_iamabot:
   - text: Je suis un robot, je suis là pour vous aider.
   utter_ask_section:
-  - text: Quelle est ta section?
+  - text: Quel est ta section?
   utter_ask_group:
   - text: Quel est ton groupe?
   utter_ask_for_other_question:
-  - text: Avez vous d'autre question?
-
-  utter_ask_class_availlable_time_duration:
-  - text: Quelle est la durée de disponibilité?
-
-  utter_ask_class_availlable_time_start:
-  - text: A partir de quelle heures?
-  
+  - text: Do you have any other questions?
+  utter_ask_class_availlable_date:
+  - text: Pouriez vous me donner une date?
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
 
 actions:
 - action_give_schedule
+- action_give_hour
 - action_give_empty_class

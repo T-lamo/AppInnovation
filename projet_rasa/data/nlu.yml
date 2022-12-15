@@ -2,33 +2,12 @@ version: "3.1"
 nlu:
 - intent: greet
   examples: |
-    - hey
-    - salut
-    - bonjour
-    - bonsoir
-    - ça va?
-    - salut, ça va?
-    - comment ça va?
-    
+    - Bonjour
+    - Salut
 - intent: goodbye
   examples: |
     - au revoir
-    - à plus
-    - à la prochaine
-    - une prochaine fois
-    - bye
-    - à tout à l’heure
-    - bonne nuit
-    - tchao
-    - à plus tard
     - adieu
-    - à toute
-    - à tout de suite
-    - bonne journée
-    - bonne soirée
-    - passe une bonne journée
-    - on se voit
-
 - intent: affirm
   examples: |
     - bien
@@ -107,53 +86,28 @@ nlu:
 
 - intent: ask_schedule
   examples: |
-    - pouvez-vous me dire mon emploi du temps ?
-    - emploi du temps ?
-    - qu'est-ce qui vient ensuite ?
-    - qu'est-ce que j'ai maintenant ?
-    - quel est l'emploi du temps ?
-    - quel est l'emploi du temps pour aujourd'hui?
-    - le cours aura lieu à quelle heure aujourd'hui ?
-    - y a-t-il un cours aujourd'hui ?
-    - quelle est la suite ?
-
+    - on emplois du temps
+    - emplois du temps
 
 - intent: give_section
   examples: |
     - ma section est [M1]{"entity": "section"}
     - ma section est [M2]{"entity": "section"}
-    - je suis en [M1]{"entity": "section"}
-    - je suis en [M2]{"entity": "section"}
     - [M1]{"entity": "section"}
     - [M2]{"entity": "section"}
-    - [M1]{"entity": "section"} is my section
-    - [M2]{"entity": "section"} is my section
-    - je suis en [master 1]{"entity": "section"}
-    - je suis en [première année de master]{"entity": "section"}
-    - je suis en [master 2]{"entity": "section"}
-    - je suis en [deuxième année de master]{"entity": "section"}
+
     
 - intent: give_group
   examples: |
-    - mon groupe est [ALTERNANT]{"entity": "group"}
-    - mon groupe est [CLASSIC]{"entity": "group"}
-    - je suis en [ALTERNANT]{"entity": "group"}
-    - je suis en [CLASSIC]{"entity": "group"}
     - [ALTERNANT]{"entity": "group"}
     - [CLASSIC]{"entity": "group"}
-    - [ALTERNANT]{"entity": "group"} est mon groupe
-    - [CLASSIC]{"entity": "group"} est mon groupe
 
-- intent: give_date
-  examples: | 
-    - [3]{"entity": "month_days"} [decembre]{"entity": "months"} [2012]{"entity": "years"}
-    - la date est [3]{"entity": "month_days"} [decembre]{"entity": "months"} [2012]{"entity": "years"}
 
-- intent: give_time
-  examples: | 
-    - a partir de [3]{"entity": "hours"} heures [30]{"entity": "minutes"}
-    - l'heure est [3]{"entity": "hours"} heures [30]{"entity": "minutes"}
-
+- intent: give_hour
+  examples: |
+    - Quel heure il est?
+    - heure
+    - hour
 
 - synonym: M1
   examples: |
@@ -165,43 +119,29 @@ nlu:
   examples: |
     - master 2
     - master2
-    - deuxième année de master  
+    - second year of master  
 
-- lookup: months
+- synonym: CLASSIC
   examples: |
-    - janvier
-    - fevrier
-    - mars
-    - avril
-    - mai
-    - juin
-    - juillet
-    - aout
-    - septembre
-    - octobre
-    - novembre
-    - decembre
+    - classique
+    - cla
 
-- regex: month_days
+- synonym: ALTERNANT
   examples: |
-    - \d{1,2}
+    - alternant
+    - alt
 
-- regex: years
+- intent: ask_class_availlability
   examples: |
-    - \d{4}
+    - classe disponible
+    - quelles  salles de classe sont disponibles ?
+    - pouvez vous me dire les salle qui sont libres?
+    - y a t il des salles libre?
 
-- regex: duration_hours
-  examples: |
-    - \d{1,2}
 
-- regex: duration_hours
+- intent: give_date
   examples: |
-    - \d{1,2}
-
-- regex: start_hours
-  examples: |
-    - \d{1,2}
-
-- regex: start_minutes
-  examples: |
-    - \d{1,2}
+    - je veux la liste des salles qui sont disponibles pour [time]{"entity":"time"}
+    - pour le [time]{"entity":"time"}
+    - la date est [time]{"entity":"time"}
+    - j aimerais avoir une salle disponible pour le [time]{"entity":"time"}

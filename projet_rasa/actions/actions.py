@@ -8,12 +8,13 @@
 # This is a simple example for a custom action which utters "Hello World!"
 
 from typing import Any, Text, Dict, List
-
+import datetime
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
 
-from db.database import Database
-
+# from db.database import Database
+# from db.query_db import Query_db
+from db.db_with_orm import Query_Db
 
 class ActionGiveSchedule(Action):
 
@@ -23,21 +24,49 @@ class ActionGiveSchedule(Action):
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        print(tracker.get_slot("section"))
+        print(tracker.get_slot("section"))    
         print(tracker.get_slot("group"))
-        result=list(filter(lambda item: self.get_schedule(item, (tracker.get_slot("section"),tracker.get_slot("group"))),Database().select()))
-        print (result)
-        dispatcher.utter_message(text=f'Today you have class at {result[0][4]}')
+        # print(tracker.get_slot("group"))
+        # print("AAAAAAAAAAAAAA")
+        # # result=list(filter(lambda item: self.get_schedule(item, (tracker.get_slot("section"),tracker.get_slot("group"))),Database().select()))
+        # # print (result)
+        print(Query_db.retrieve_record_name_room(str(tracker.get_slot("section")),str(tracker.get_slot("group"))))
+        dispatcher.utter_message("OK " + str(tracker.get_slot("section")) + str(tracker.get_slot("group")))
 
        
+
         return []
-    def get_schedule(self,item,data):
-        if(item[0]==data[0] and item[1]==data[1]):
-            return True
-        else: 
-            return False
+    
+
+class ActionGiveHour(Action):
+
+    def name(self) -> Text:
+        return "action_give_hour"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        
+        # result=list(filter(lambda item: self.get_schedule(item, (tracker.get_slot("section"),tracker.get_slot("group"))),Database().select()))
+        # print (result)
+        now = datetime.datetime.now()
+        print("fff")
+        print(now.year, now.month, now.day, now.hour, now.minute, now.second)
+        print(tracker.get_slot("group"))
+
+        print(Query_Db.retrieve_name_room(self,section_="M1",grp_="alternant",time_="08:00"))
+        # dispatcher.utter_message("Il est " + str(now.hour) + " heure")
+        print(tracker.get_slot("section"))    
+        print(tracker.get_slot("group"))
+        # print(tracker.get_slot("group"))
+        # print("AAAAAAAAAAAAAA")
+        # # result=list(filter(lambda item: self.get_schedule(item, (tracker.get_slot("section"),tracker.get_slot("group"))),Database().select()))
+        # # print (result)
+        # dispatcher.utter_message(Query_Db.retrieve_schedule_halfday(self=self,section_="M2",grp_="classique",time_=str(now.hour)+":"+str(now.minute)))
+        dispatcher.utter_message(Query_Db.retrieve_schedule_halfday(self=self,section_=tracker.get_slot("section"),grp_=tracker.get_slot("group"),time_=str(now.hour) + ":" + str(now.minute)))
 
 
+        return []
 
 class ActionGiveEmptyClass(Action):
 
@@ -48,13 +77,11 @@ class ActionGiveEmptyClass(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         print("test")
+        print("section",tracker.get_slot("section"))
+        print("group",tracker.get_slot("group"))
+        print("time",tracker.get_slot("time"))
 
-        print("month_days",tracker.get_slot("month_days"))
-        print("month",tracker.get_slot("months"))
-        print("years",tracker.get_slot("years"))
-        print("hours",tracker.get_slot("hours"))
-        print("minutes",tracker.get_slot("minutes"))
+
         dispatcher.utter_message(text=f'Ok')
 
         return []
-   
