@@ -52,45 +52,30 @@ stories:
   - intent: affirm
   - action: utter_goodbye
 
-# - story: happy path 3
-#   steps:
-#   - intent: ask_schedule
-#   - action: utter_ask_section
-#   - intent: give_section
-#   - slot_was_set:
-#     - section: "M1"
-#   - action: utter_ask_group
-#   - intent: give_group 
-#   - slot_was_set:
-#     - group: "ALTERNANT"
-#   - action: action_give_hour
-  # - action: utter_greet
-
-- story: happy path 4
+- story: happy path 3
   steps:
   - intent: ask_schedule
   - action: utter_ask_section
   - intent: give_section
   - slot_was_set:
     - section: "M1"
-  - action: utter_ask_class_availlable_date
-  - intent: give_date
-  - slot_was_set:
-    - time: value
   - action: utter_ask_group
   - intent: give_group 
   - slot_was_set:
     - group: "ALTERNANT"
-  - action: action_give_empty_class
+  - action: action_give_hour
+  # - action: utter_greet
+
+
   
-# - story: heure emplois
-#   steps:
-#   - intent: ask_schedule
-#   - action: utter_ask_class_availlable_date
-#   - intent: give_date
-#   - slot_was_set:
-#     - time: value
-#   - action: action_give_empty_class
+- story: heure emplois
+  steps:
+  - intent: ask_class_availlability
+  - action: utter_ask_class_availlable_date
+  - intent: give_date
+  - slot_was_set:
+    - time: value
+  - action: action_give_empty_class
  
 - story: hour path
   steps:
