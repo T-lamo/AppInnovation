@@ -1,0 +1,140 @@
+version: "3.1"
+nlu:
+- intent: greet
+  examples: |
+    - Bonjour
+    - Salut
+- intent: goodbye
+  examples: |
+    - au revoir
+    - adieu
+- intent: affirm
+  examples: |
+    - yes
+    - y
+    - indeed
+    - of course
+    - that sounds good
+    - correct
+- intent: deny
+  examples: |
+    - no
+    - n
+    - never
+    - I don't think so
+    - don't like that
+    - no way
+    - not really
+- intent: mood_great
+  examples: |
+    - perfect
+    - great
+    - amazing
+    - feeling like a king
+    - wonderful
+    - I am feeling very good
+    - I am great
+    - I am amazing
+    - I am going to save the world
+    - super stoked
+    - extremely good
+    - so so perfect
+    - so good
+    - so perfect
+    - fine
+- intent: mood_unhappy
+  examples: |
+    - my day was horrible
+    - I am sad
+    - I don't feel very well
+    - I am disappointed
+    - super sad
+    - I'm so sad
+    - sad
+    - very sad
+    - unhappy
+    - not good
+    - not very good
+    - extremly sad
+    - so saad
+    - so sad
+- intent: bot_challenge
+  examples: |
+    - are you a bot?
+    - are you a human?
+    - am I talking to a bot?
+    - am I talking to a human?
+    - How are you?
+- intent: thanks
+  examples: | 
+    - thank you
+    - thanks
+    - very many thanks
+    - thanks for your help.
+    - super
+    - unbelievable
+    - your are amazing
+
+- intent: ask_schedule
+  examples: |
+    - on emplois du temps
+    - emplois du temps
+    - emplois
+
+- intent: give_section
+  examples: |
+    - ma section est [M1]{"entity": "section"}
+    - ma section est [M2]{"entity": "section"}
+    - [M1]{"entity": "section"}
+    - [M2]{"entity": "section"}
+
+    
+- intent: give_group
+  examples: |
+    - [ALTERNANT]{"entity": "group"}
+    - [CLASSIC]{"entity": "group"}
+    - Je suis un [M1]{"entity": "group"}
+    - mon groupe est [M2]{"entity": "group"}
+
+
+- intent: give_hour
+  examples: |
+    - Quel heure il est?
+    - heure
+    - hour
+
+- synonym: M1
+  examples: |
+    - master 1
+    - master1
+    - first year of master
+    
+- synonym: M2
+  examples: |
+    - master 2
+    - master2
+    - second year of master  
+
+- synonym: CLASSIC
+  examples: |
+    - classique
+    - cla
+
+- synonym: ALTERNANT
+  examples: |
+    - alternant
+    - alt
+
+- intent: ask_class_availlability
+  examples: |
+    - classe disponible
+    - quelles  salles de classe sont disponibles ?
+    - pouvez vous me dire les salle qui sont libres?
+    - y a t il des salles libre?
+
+- intent: give_date
+  examples: |
+    - je veux la liste des salles qui sont disponibles pour [time]{"entity":"time"}
+    - pour le [time]{"entity":"time"}
+    - la date est [time]{"entity":"time"}
+    - j aimerais avoir une salle disponible pour le [time]{"entity":"time"}

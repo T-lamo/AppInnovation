@@ -1,0 +1,77 @@
+version: '3.1'
+intents:
+- affirm
+- bot_challenge
+- deny
+- goodbye
+- greet
+- mood_great
+- mood_unhappy
+- thanks
+- ask_schedule
+- give_hour
+- give_date
+- ask_class_availlability
+- give_section:
+    use_entities:
+      - section
+- give_group:
+    use_entities:
+      - group
+
+entities:
+- section
+- group
+- time
+
+slots:
+  section:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: section
+  group:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: group
+  
+  time:
+    type: any
+    mappings:
+    - type: from_entity
+      entity: time
+
+
+responses:
+  utter_greet:
+  - text: Salut! ça va?
+  utter_cheer_up:
+  - text: 'Here is something to cheer you up:'
+    image: https://i.imgur.com/nGF1K8f.jpg
+  utter_did_that_help:
+  - text: Did that help you?
+  utter_happy:
+  - text: Great, carry on!
+  utter_goodbye:
+  - text: Au revoir
+  utter_iamabot:
+  - text: I am a bot, powered by Rasa.
+  utter_ask_section:
+  - text: Quel est ta section?
+  utter_ask_group:
+  - text: Quel est ton groupe?
+  utter_ask_for_other_question:
+  - text: Do you have any other questions?
+  utter_ask_class_availlable_date:
+  - text: Pouriez vous me donner une date?
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+
+actions:
+- action_give_schedule
+- action_give_hour
+- action_give_empty_class
