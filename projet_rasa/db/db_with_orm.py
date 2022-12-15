@@ -51,7 +51,7 @@ metadata_obj.create_all(engine)
     #     grp="classique",
     #     name="Innovation",
     #     room="S2",
-    #     time="11:45"
+    #     time="17:45"
     # )
     # course_2 = Course(
     #     section="L2",
