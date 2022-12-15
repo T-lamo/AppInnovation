@@ -12,7 +12,6 @@ from typing import Any, Text, Dict, List
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
 
-from db.database import Database
 
 
 class ActionGiveSchedule(Action):
@@ -47,13 +46,7 @@ class ActionGiveEmptyClass(Action):
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        print("test")
-
-        print("month_days",tracker.get_slot("month_days"))
-        print("month",tracker.get_slot("months"))
-        print("years",tracker.get_slot("years"))
-        print("hours",tracker.get_slot("hours"))
-        print("minutes",tracker.get_slot("minutes"))
+        print("time",tracker.get_slot("time"))
         dispatcher.utter_message(text=f'Ok')
 
         return []

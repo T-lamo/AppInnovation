@@ -20,6 +20,10 @@ intents:
       - month_days
       - months
       - years
+- give_time:
+    use_entities:
+      - hours
+      - minutes
 
 entities:
 - section
@@ -27,6 +31,8 @@ entities:
 - years
 - months
 - month_days
+- hours
+- minutes
 
 slots:
   section:
@@ -55,7 +61,20 @@ slots:
     mappings:
     - type: from_entity
       entity: months
+  hours:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: hours 
   
+  minutes:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: minutes
+
   years:
     type: text
     influence_conversation: false
@@ -84,6 +103,13 @@ responses:
   - text: Quel est ton groupe?
   utter_ask_for_other_question:
   - text: Avez vous d'autre question?
+
+  utter_ask_class_availlable_time_duration:
+  - text: Quelle est la durée de disponibilité?
+
+  utter_ask_class_availlable_time_start:
+  - text: A partir de quelle heures?
+  
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true

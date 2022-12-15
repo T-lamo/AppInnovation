@@ -149,6 +149,11 @@ nlu:
     - [3]{"entity": "month_days"} [decembre]{"entity": "months"} [2012]{"entity": "years"}
     - la date est [3]{"entity": "month_days"} [decembre]{"entity": "months"} [2012]{"entity": "years"}
 
+- intent: give_time
+  examples: | 
+    - a partir de [3]{"entity": "hours"} heures [30]{"entity": "minutes"}
+    - l'heure est [3]{"entity": "hours"} heures [30]{"entity": "minutes"}
+
 
 - synonym: M1
   examples: |
