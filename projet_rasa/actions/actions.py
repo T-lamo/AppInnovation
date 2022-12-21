@@ -16,6 +16,8 @@ from rasa_sdk.executor import CollectingDispatcher
 # from db.database import Database
 # from db.query_db import Query_db
 from db.db_with_orm import Query_Db
+from socialisation.weather import getWeather
+from socialisation.index import SociabilityQuestion
 
 # class ActionGiveSchedule(Action):
 
@@ -38,7 +40,7 @@ from db.db_with_orm import Query_Db
 
 #         return []
     
-
+sociability=SociabilityQuestion()
 class ActionGiveHour(Action):
 
     def name(self) -> Text:
@@ -97,4 +99,41 @@ class ActionGiveEmptyClass(Action):
 
         dispatcher.utter_message(text=f'Ok')
 
+        return []
+
+
+class ActionGiveWeather(Action):
+    def name(self) -> Text:
+        return "action_give_weather"
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        city = tracker.get_slot("city")
+        dispatcher.utter_message(getWeather(city))
+        return []
+
+class ActionGiveUnivInfo(Action):
+    def name(self) -> Text:
+        return "action_give_univ_info"
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        dispatcher.utter_message(sociability.univInfo())
+        return []
+
+class ActionGiveUnivHoraireAcceuil(Action):
+    def name(self) -> Text:
+        return "action_give_univ_horaire_acceuil"
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        dispatcher.utter_message(sociability.univHeureAcceuil())
+        return []
+class ActionGiveAddresseServiceAccompagnement(Action):
+    def name(self) -> Text:
+        return "action_give_addresse_service_accompagnement"
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        dispatcher.utter_message(sociability.ServiceAccompagement())
         return []

@@ -13,3 +13,8 @@ _{ These following should be installed (latest version is preferred unless the v
 
 ## Stories
 _{ Please follow the stories in stories file }
+
+
+
+## https://rasa.com/docs/rasa/components/#ducklingentityextractor
+### sudo docker run -p 8000:8000 rasa/duckling

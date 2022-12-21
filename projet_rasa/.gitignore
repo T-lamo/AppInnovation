@@ -1,4 +1,4 @@
-models/
+projet_rasa/models/
 .rasa/
 venv/
 results/

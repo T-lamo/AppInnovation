@@ -28,10 +28,14 @@ pipeline:
   - name: FallbackClassifier
     threshold: 0.3
     ambiguity_threshold: 0.1
+  - name: RegexEntityExtractor
+    case_sensitive: False
+    use_lookup_tables: True
+    use_regexes: True
 
   - name: "DucklingEntityExtractor"
     # url of the running duckling server
-    url: "http://localhost:8008"
+    url: "http://localhost:8000"
     # dimensions to extract
     dimensions: ["time"]
     # allows you to configure the locale, by default the language is

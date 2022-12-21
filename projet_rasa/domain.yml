@@ -12,6 +12,14 @@ intents:
 - give_hour
 - give_date
 - ask_class_availlability
+- ask_univ_info
+- ask_horaire_acceuil
+- ask_service_accompagnement
+- ask_responsable_stage
+- ask_responsable_alternance
+- ask_city_weather:
+    use_entities:
+      - city
 - give_section:
     use_entities:
       - section
@@ -23,6 +31,7 @@ entities:
 - section
 - group
 - time
+- city
 
 slots:
   section:
@@ -31,6 +40,7 @@ slots:
     mappings:
     - type: from_entity
       entity: section
+ 
   group:
     type: text
     influence_conversation: false
@@ -44,6 +54,13 @@ slots:
     - type: from_entity
       entity: time
 
+  city:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: city
+
 
 responses:
   utter_greet:
@@ -52,13 +69,13 @@ responses:
   - text: 'Here is something to cheer you up:'
     image: https://i.imgur.com/nGF1K8f.jpg
   utter_did_that_help:
-  - text: Did that help you?
+  - text: Est ce que cela vous a aidé?
   utter_happy:
-  - text: Great, carry on!
+  - text: Alors, je suis content!
   utter_goodbye:
   - text: Au revoir
   utter_iamabot:
-  - text: I am a bot, powered by Rasa.
+  - text: Je suis un robot.
   utter_ask_section:
   - text: Quel est ta section?
   utter_ask_group:
@@ -67,6 +84,10 @@ responses:
   - text: Do you have any other questions?
   utter_ask_class_availlable_date:
   - text: Pouriez vous me donner une date?
+  utter_give_responsable_alternance:
+  - text: C'est bien Corinne Fredouille.
+  utter_give_responsable_stage:
+  - text: Les responsables du stage au CERI sont Sérigne Gueye et Mireille Rozier.
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
@@ -75,3 +96,7 @@ actions:
 - action_give_schedule
 - action_give_hour
 - action_give_empty_class
+- action_give_weather
+- action_give_univ_info
+- action_give_univ_horaire_acceuil
+- action_give_addresse_service_accompagnement
