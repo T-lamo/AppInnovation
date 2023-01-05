@@ -140,7 +140,7 @@ stories:
   - intent: ask_joke
   - action: action_joke
 
-- story: send SMS
+- story: get message SMS
   steps:
   - intent: ask_send_message
   - slot_was_set:

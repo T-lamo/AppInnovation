@@ -81,8 +81,8 @@ slots:
     type: text
     influence_conversation: false
     mappings:
-    - type: from_entity
-      entity: profMessage
+    - type: from_text
+      itent: give_message
 
 
 responses:
