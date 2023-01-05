@@ -12,6 +12,10 @@ import datetime
 from dateutil import parser
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
+import requests
+from twilio.rest import Client
+
+
 
 # from db.database import Database
 # from db.query_db import Query_db
@@ -137,3 +141,48 @@ class ActionGiveAddresseServiceAccompagnement(Action):
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         dispatcher.utter_message(sociability.ServiceAccompagement())
         return []
+
+class ActionJoke(Action):
+    def name(self) -> Text:
+        return "action_joke"
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+        url = "https://blague.xyz/api/joke/random"
+        headers = { "Accept": "application/json" }
+        response = requests.get(url, headers=headers)
+        if response.status_code == 200:
+            joke = response.json()["joke"]
+            dispatcher.utter_message(str(joke["question"]) +" "+ str(joke["answer"]))
+        else:
+            dispatcher.utter_message("Pas de blagues pour aujourd'hui")
+        
+        return []
+
+class ActionSMS(Action):
+    def name(self) -> Text:
+        return "action_SMS"
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+        phone = Query_Db.retrieve_prof_phone_by_name(self=self,name_ = str(tracker.get_slot("profName")).lower())
+        print(tracker.get_slot("profName"),tracker.get_slot("profMessage"))
+        account_sid = "AC64c34eb4c59c3febc79e26819d37a1df"
+        auth_token = "ad15ba5285d7f558cd87cc5a5ef9b60d"
+        twilio_phone_number = "+15153688407"
+
+        client = Client(account_sid, auth_token)
+
+        client.messages.create(
+            from_=twilio_phone_number,
+            to=phone,
+            body= str(tracker.get_slot("profMessage"))
+        )
+        
+
+        dispatcher.utter_message("Message envoyé !")
+        
+        return []
+

@@ -29,6 +29,13 @@ class Disponibilite(Base):
     end_time = Column(String(100))
     date = Column(String(100))
 
+class Prof(Base):
+    __tablename__ = "prof"
+    id = Column(Integer, primary_key=True)
+    name =Column(String(100))
+    phone = Column(String(100))
+    cours= Column(String(100))
+
 # create a database sqlite
 conn = sqlite3.connect('db/schedule.db') 
 cursor = conn.cursor()
@@ -60,6 +67,15 @@ course = Table(
     Column("start_time", String),
     Column("end_time", String),
     Column("date", String),
+)  
+
+course = Table(
+    "prof",
+    metadata_obj,
+    Column("id", Integer, primary_key=True),
+    Column("name", String),
+    Column("phone", String),
+    Column("cours", String)
 )  
 # )
 # # create all tables 
@@ -144,6 +160,28 @@ def create_some_dispos():
             )
             #insert values to database
             session.add_all([dispo_1, dispo_2,dispo_3,dispo_4,dispo_5])
+            session.commit()
+
+def create_some_profs():
+    with Session(engine) as session:
+            prof1 = Prof(
+                name ="amos",
+                phone = "+33680596882",
+                cours= "math"
+            )
+            prof2 = Prof(
+                name ="bastien",
+                phone = "+33680596882",
+                cours= "reseau"
+            )
+            prof3 = Prof(
+                name ="fara",
+                phone = "+33680596882",
+                cours= "securite"
+            )
+           
+            #insert values to database
+            session.add_all([prof1,prof2,prof3])
             session.commit()
 
 
@@ -278,14 +316,45 @@ class Query_Db:
 
 
         return res
-    
+
+    def retrieve_prof_phone_by_name(self,name_):
+        stmt = Session(engine).execute(select(Prof)
+        .where(str(Prof.name).lower() == name_)).fetchone()
+
+        print(len(stmt))
+        res = ""
+        
+        # if response from db is empty
+        if (len(stmt) != 0):
+            # Query_Db.create_html(stmts)
+            res =str(stmt.phone)
+        else:
+            res = "erreur"
+        # print(stmt.)
+
+
+        return res
+
+    def retrieve_prof_name_by_course(self,cours_):
+        stmt = Session(engine).execute(select(Prof)
+        .where(Prof.cours == cours_)).fetchone()
+
+        print(len(stmt))
+        res = ""
+       
+        # if response from db is empty
+        if (len(stmt) != 0):
+            # Query_Db.create_html(stmts)
+            res =str(stmt.name_)
+        else:
+            res = "erreur"
 # create courses in db
 # create_some_courses()
 # create dispos in db   
 # create_some_dispos()
 # retrieve a course in the database
 # one_instance = Query_Db()
-
+create_some_profs()
 # res = one_instance.retrieve_schedule_halfday('M2','classique','13:00')
 # print(res) 
 

@@ -120,6 +120,7 @@ nlu:
     - temperature à [Paris]{"entity":"city"}
     - est il froid à [Paris]{"entity":"city"}?
     - fait il froid à [Paris]{"entity":"city"}?
+    - météo à [Paris]{"entity":"city"}?
 
 - intent: ask_univ_info
   examples: |
@@ -156,11 +157,25 @@ nlu:
     - responsable du stage  au CERI?
     - qui est responsable du stage au CERI?
 
-- synonym: M1
+- intent: ask_joke
   examples: |
-    - master 1
-    - master1
-    - first year of master
+    - Fais moi une blague.
+    - Blague.
+    - Blague du jour.
+    - Je veux rigoler.
+
+- intent: ask_send_message
+  examples: |
+    - Envoi un message à [amos]{"entity": "profName"}
+    - Envoi à [amos]{"entity": "profName"}
+    - Message [amos]{"entity": "profName"}
+
+- intent: give_message
+  examples: |
+    - [amos]{"entity": "profMessage"}
+    - Envoi [amos]{"entity": "profMessage"}
+    - Le message est [amos]{"entity": "profMessage"}
+
     
 - synonym: M2
   examples: |

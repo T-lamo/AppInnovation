@@ -10,8 +10,8 @@ def get_joke():
   else:
     return None
 
-joke = get_joke()
-if joke:
-  print(joke)
-else:
-  print("Désolée je n'ai pas trouvé de blagues pour vous aujourd'hui haha")
+# joke = get_joke()
+# if joke:
+#   print(joke)
+# else:
+#   print("Désolée je n'ai pas trouvé de blagues pour vous aujourd'hui haha")

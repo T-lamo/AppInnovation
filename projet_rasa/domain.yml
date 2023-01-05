@@ -17,6 +17,10 @@ intents:
 - ask_service_accompagnement
 - ask_responsable_stage
 - ask_responsable_alternance
+- ask_joke
+- ask_send_message:
+    use_entities:
+      - profName
 - ask_city_weather:
     use_entities:
       - city
@@ -26,12 +30,17 @@ intents:
 - give_group:
     use_entities:
       - group
+- give_message:
+    use_entities:
+      - profMessage
 
 entities:
 - section
 - group
 - time
 - city
+- profName
+- profMessage
 
 slots:
   section:
@@ -60,6 +69,20 @@ slots:
     mappings:
     - type: from_entity
       entity: city
+  
+  profName:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: profName
+  
+  profMessage:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: profMessage
 
 
 responses:
@@ -88,6 +111,10 @@ responses:
   - text: C'est bien Corinne Fredouille.
   utter_give_responsable_stage:
   - text: Les responsables du stage au CERI sont Sérigne Gueye et Mireille Rozier.
+  utter_thanks:
+  - text: Je t'en pris ! 
+  utter_ask_message:
+  - text: Quel message veux tu envoyer?
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
@@ -100,3 +127,5 @@ actions:
 - action_give_univ_info
 - action_give_univ_horaire_acceuil
 - action_give_addresse_service_accompagnement
+- action_joke
+- action_SMS

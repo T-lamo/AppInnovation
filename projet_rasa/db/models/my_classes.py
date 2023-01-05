@@ -14,4 +14,9 @@ class SalleDisponibilite:
         self.date = date
 
 class Prof:
-    pass
+    def __init__(self,name,phone,cours) -> None:
+        self.name = name
+        self.phone = phone
+        self.cours = cours
+
+        

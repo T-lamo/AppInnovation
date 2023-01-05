@@ -135,3 +135,19 @@ stories:
   - intent: deny
   - action: utter_goodbye
 
+- story: joke
+  steps:
+  - intent: ask_joke
+  - action: action_joke
+
+- story: send SMS
+  steps:
+  - intent: ask_send_message
+  - slot_was_set:
+    - profName: value
+  - action: utter_ask_message
+  - intent: give_message
+  - slot_was_set:
+    - profMessage: value
+  - action: action_SMS
+ 
