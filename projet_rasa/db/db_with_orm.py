@@ -300,11 +300,17 @@ class Query_Db:
         stmt = Session(engine).execute(select(Prof)
             .where(Prof.name == name_)).scalar_one()
 
+
         print("stmt value",stmt)
         
+        
         # if response from db is empty
-        res =str(stmt.phone)
-        print("message",res)
+        if (len(stmt) != 0):
+            # Query_Db.create_html(stmts)
+            res =str(stmt.phone)
+        else:
+            res = "erreur"
+        # print(stmt.)
 
 
         return res
@@ -327,8 +333,12 @@ class Query_Db:
 #create_some_courses()
 #create dispos in db   
 #create_some_dispos()
+#create_some_courses()
+#create dispos in db   
+#create_some_dispos()
 # retrieve a course in the database
 # one_instance = Query_Db()
+#create_some_profs()
 #create_some_profs()
 # res = one_instance.retrieve_schedule_halfday('M2','classique','13:00')
 # print(res) 
