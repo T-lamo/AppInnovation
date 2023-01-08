@@ -9,9 +9,3 @@ def get_joke():
     return str(joke["question"]) +" "+ str(joke["answer"])
   else:
     return None
-
-# joke = get_joke()
-# if joke:
-#   print(joke)
-# else:
-#   print("Désolée je n'ai pas trouvé de blagues pour vous aujourd'hui haha")

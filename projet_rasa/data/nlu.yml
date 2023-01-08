@@ -13,9 +13,8 @@ nlu:
     
 - intent: affirm
   examples: |
-    - Oui
-    - ui
-    - biensur
+    - oui
+    - bien sur
     - yeah
     - d accord
     
@@ -25,7 +24,6 @@ nlu:
     - jamais
     - je ne crois pas
     - je n aime pas ça
-    - on n a pas de choix
     - pas de choix
     - pas vraiment
 
@@ -38,7 +36,7 @@ nlu:
     - bien
     - merveilleux
     - top
-    - je suis top
+
   
     
 - intent: mood_unhappy
@@ -169,12 +167,15 @@ nlu:
     - Envoi un message à [amos]{"entity": "profName"}
     - Envoi à [amos]{"entity": "profName"}
     - Message [amos]{"entity": "profName"}
+    - Envoi un texto [amos]{"entity": "profName"}
+
 
 - intent: give_message
   examples: |
-    - [amos]{"entity": "profMessage"}
-    - Envoi [amos]{"entity": "profMessage"}
-    - Le message est [amos]{"entity": "profMessage"}
+    - [message]{"entity": "profMessage"}
+    - Envoi [message]{"entity": "profMessage"}
+    - Le message est [message]{"entity": "profMessage"}
+    - Voici le message [message]{"entity": "profMessage"}
 
     
 - synonym: M2
@@ -203,6 +204,7 @@ nlu:
 #     - New york
 #     - Brasilia
 #     - Port-au-Prince
+
 
 - regex: city
   examples: |

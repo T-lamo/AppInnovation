@@ -18,3 +18,10 @@ _{ Please follow the stories in stories file }
 
 ## https://rasa.com/docs/rasa/components/#ducklingentityextractor
 ### sudo docker run -p 8000:8000 rasa/duckling
+
+
+
+## configuration
+### lancer rasa (rasa run/rasa shell)
+###
+
