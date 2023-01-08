@@ -1,0 +1,219 @@
+version: "3.1"
+nlu:
+- intent: greet
+  examples: |
+    - Bonjour
+    - Salut
+    - comment ca va?
+
+- intent: goodbye
+  examples: |
+    - au revoir
+    - adieu
+    
+- intent: affirm
+  examples: |
+    - oui
+    - bien sur
+    - yeah
+    - d accord
+    
+- intent: deny
+  examples: |
+    - non
+    - jamais
+    - je ne crois pas
+    - je n aime pas ça
+    - pas de choix
+    - pas vraiment
+
+- intent: mood_great
+  examples: |
+    - parfait
+    - nickel
+    - très bien
+    - très bon
+    - bien
+    - merveilleux
+    - top
+
+  
+    
+- intent: mood_unhappy
+  examples: |
+    - je passe une journee difficile
+    - je suis triste
+    - je ne me sens pas bien
+    - je suis desole
+    - très triste
+    - je suis très triste
+    - triste
+    - je ne suis pas content
+    - pas content
+    
+- intent: bot_challenge
+  examples: |
+    - es tu un robot?
+    - es tu humain?
+    - es tu un humain?
+    - est ce que je parle à un robot?
+    - est ce que je parle à un humain?
+    - est ce que je parle à une personne
+
+- intent: thanks
+  examples: | 
+    - merci
+    - mille mercis
+    - grand merci
+    - je vous remercie.
+
+
+- intent: ask_schedule
+  examples: |
+    - on emplois du temps
+    - emplois du temps
+    - emplois
+
+- intent: give_section
+  examples: |
+    - ma section est [M1]{"entity": "section"}
+    - ma section est [M2]{"entity": "section"}
+    - [M1]{"entity": "section"}
+    - [M2]{"entity": "section"}
+
+    
+- intent: give_group
+  examples: |
+    - [ALTERNANT]{"entity": "group"}
+    - [CLASSIC]{"entity": "group"}
+    - Je suis un [M1]{"entity": "group"}
+    - mon groupe est [M2]{"entity": "group"}
+
+
+- intent: give_hour
+  examples: |
+    - Quel heure il est?
+    - heure
+    - hour
+
+- intent: ask_class_availlability
+  examples: |
+    - classe disponible
+    - quelles  salles de classe sont disponibles ?
+    - pouvez vous me dire les salle qui sont libres?
+    - y a t il des salles libre?
+
+- intent: give_date
+  examples: |
+    - je veux la liste des salles qui sont disponibles pour [time]{"entity":"time"}
+    - pour le [time]{"entity":"time"}
+    - la date est [time]{"entity":"time"}
+    - j aimerais avoir une salle disponible pour le [time]{"entity":"time"}
+
+- intent: ask_city_weather
+  examples: |
+    - quelle est la temperature à [Paris]{"entity":"city"}
+    - est il chaud à [Paris]{"entity":"city"}?
+    - fait il chaud à [Paris]{"entity":"city"}?
+    - temperature à [Paris]{"entity":"city"}
+    - est il froid à [Paris]{"entity":"city"}?
+    - fait il froid à [Paris]{"entity":"city"}?
+    - météo à [Paris]{"entity":"city"}?
+
+- intent: ask_univ_info
+  examples: |
+    - que savez vous sur l'université avignon?
+    - parle moi de l'université avignon.
+    - avignon université, ça vous parle?
+    - avignon université, ça date quant?
+
+- intent: ask_horaire_acceuil
+  examples: |
+    - horaire d'acceuil?
+    - le secretariat s'ouvre à quelle heure?
+    - pouriez vous me dire l'heure d'ouverture du secretariat?
+    - j'ai besoin du secretariat?
+
+- intent: ask_service_accompagnement
+  examples: |
+    - quelle est l'adresse du service d'accompagnement?
+    - l'adresse du service d'accompagnement?
+    - adresse safire?
+    - comment se rendre au service d'accompagnement?
+
+- intent: ask_responsable_alternance
+  examples: |
+    - quelle est le responsable de l'altenance au CERI?
+    - connaissez vous le responsable de l'alternance au CERI?
+    - responsable de l'alternance au CERI?
+    - qui est responsable de l'alternance au CERI?
+
+- intent: ask_responsable_stage
+  examples: |
+    - quelle est le responsable du stage au CERI?
+    - connaissez vous le responsable du stage au CERI?
+    - responsable du stage  au CERI?
+    - qui est responsable du stage au CERI?
+
+- intent: ask_joke
+  examples: |
+    - Fais moi une blague.
+    - Blague.
+    - Blague du jour.
+    - Je veux rigoler.
+
+- intent: ask_send_message
+  examples: |
+    - Envoi un message à [amos]{"entity": "profName"}
+    - Envoi à [amos]{"entity": "profName"}
+    - Message [amos]{"entity": "profName"}
+    - Envoi un texto [amos]{"entity": "profName"}
+
+
+- intent: give_message
+  examples: |
+    - [message]{"entity": "profMessage"}
+    - Envoi [message]{"entity": "profMessage"}
+    - Le message est [message]{"entity": "profMessage"}
+    - Voici le message [message]{"entity": "profMessage"}
+
+    
+- synonym: M2
+  examples: |
+    - master 2
+    - master2
+    - deuxieme annee de master  
+
+- synonym: M1
+  examples: |
+    - master 1
+    - master1
+    - deuxieme annee de master  
+
+
+- synonym: CLASSIC
+  examples: |
+    - classique
+    - classic
+    
+
+- synonym: ALTERNANT
+  examples: |
+    - alternant
+    - alt
+
+# - lookup: city
+#   examples: |
+#     - Paris
+#     - Avignon
+#     - Marseille
+#     - Lyon
+#     - Nice
+#     - New york
+#     - Brasilia
+#     - Port-au-Prince
+
+
+- regex: city
+  examples: |
+    - \w+
