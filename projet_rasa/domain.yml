@@ -121,7 +121,6 @@ session_config:
 
 actions:
 - action_give_schedule
-- action_give_hour
 - action_give_empty_class
 - action_give_weather
 - action_give_univ_info

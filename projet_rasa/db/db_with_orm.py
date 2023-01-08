@@ -204,22 +204,9 @@ class Query_Db:
         self.session.add(new_course)
         self.session.close()
 
-    # query database
-    def retrieve_name_room(self,section_,grp_,time_) -> String:
-        try:
-            stmt = self.session.execute(select(Course)
-            .where(Course.section == section_)
-            .where(Course.grp == grp_)
-            .where(Course.time == time_)).scalar_one()
-
-            return "You have '"+str(stmt.name)+"' class in '"+str(stmt.room)+" room"
-        
-        except Exception:
-            return "Hopefully you don't have course at this hour"
-    
     def create_html(stmts):
         # Creating the HTML file
-        file_html = open("demo.html", "w")
+        file_html = open("../../../NaoRasaASRProject/html/index.html", "w")
         # Adding the input data to the HTML file
         file_html.write('''<html>
         <head>
@@ -273,8 +260,8 @@ class Query_Db:
         stmts = Session(engine).execute(select(Course)
         .where(Course.section == section_)
         .where(Course.grp == grp_)
-        # .where(Course.time > datetime.strptime(time_, "%H:%M").time())
-        # .where(Course.time < halfday)
+        .where(Course.time > datetime.strptime(time_, "%H:%M").time())
+        .where(Course.time < halfday)
         ).fetchall()
         print(len(stmts))
         res = ""
@@ -285,13 +272,8 @@ class Query_Db:
                 res += "Tu as cours de " + stmt[0].name + " en salle " + stmt[0].room + " à " + stmt[0].time + " heure. \n"
         else:
             res += "Malheureusement tu n'as pas de cours. Va à la bibliothèque mon petit fénéant "
-        # print(stmt.)
-
-
+        
         return res
-    
-        # except Exception:
-        #     return section_ + " " + grp_ + " " + time_
 
     def retrieve_salle_disponible(self,time_,date_):
         stmts = Session(engine).execute(select(Disponibilite)
@@ -305,14 +287,10 @@ class Query_Db:
         res = ""
         # if response from db is empty
         if (len(stmts) != 0):
-            # Query_Db.create_html(stmts)
             for stmt in stmts:
-            #     # retrieve available dates
-            #     if(stmt[0].date == date_ & ):
                 res += "La salle " + stmt[0].label_salle + " est disponible " + stmt[0].date +" à "+str(time_)+" heure. \n"
         else:
             res += "Malheureusement aucune salle n'est disponible le "+str(date_)+" à "+str(time_)
-        # print(stmt.)
 
 
         return res
@@ -327,9 +305,12 @@ class Query_Db:
         
         
         # if response from db is empty
-       
-        res =str(stmt.phone)
-        print("message",res)
+        if (len(stmt) != 0):
+            # Query_Db.create_html(stmts)
+            res =str(stmt.phone)
+        else:
+            res = "erreur"
+        # print(stmt.)
 
 
         return res
@@ -347,12 +328,17 @@ class Query_Db:
             res =str(stmt.name_)
         else:
             res = "erreur"
+
 # create courses in db
+#create_some_courses()
+#create dispos in db   
+#create_some_dispos()
 #create_some_courses()
 #create dispos in db   
 #create_some_dispos()
 # retrieve a course in the database
 # one_instance = Query_Db()
+#create_some_profs()
 #create_some_profs()
 # res = one_instance.retrieve_schedule_halfday('M2','classique','13:00')
 # print(res) 

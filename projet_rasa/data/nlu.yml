@@ -13,9 +13,8 @@ nlu:
     
 - intent: affirm
   examples: |
-    - Oui
-    - ui
-    - biensur
+    - oui
+    - bien sur
     - yeah
     - d accord
     
@@ -25,7 +24,6 @@ nlu:
     - jamais
     - je ne crois pas
     - je n aime pas ça
-    - on n a pas de choix
     - pas de choix
     - pas vraiment
 
@@ -38,7 +36,7 @@ nlu:
     - bien
     - merveilleux
     - top
-    - je suis top
+
   
     
 - intent: mood_unhappy
@@ -184,7 +182,14 @@ nlu:
   examples: |
     - master 2
     - master2
-    - second year of master  
+    - deuxieme annee de master  
+
+- synonym: M1
+  examples: |
+    - master 1
+    - master1
+    - deuxieme annee de master  
+
 
 - synonym: CLASSIC
   examples: |

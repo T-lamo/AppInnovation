@@ -28,7 +28,6 @@ class SociabilityQuestion():
             text=text.replace(day, f', {day}')
         text=text.replace("horaires d'accueil :", "").strip()[2:]
         
-        # text=text.replace("FranceIl","France. Il").strip()
         return f"Voici l'horaire d'acceuil de l'université:  {text}"
 
     def ServiceAccompagement(self):
