@@ -17,6 +17,9 @@ from rasa_sdk.executor import CollectingDispatcher
 import requests
 from twilio.rest import Client
 
+from geotext import GeoText
+
+
 
 
 # from db.database import Database
@@ -114,8 +117,18 @@ class ActionGiveWeather(Action):
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        city = tracker.get_slot("city")
-        dispatcher.utter_message(getWeather(city))
+
+        text = tracker.get_slot("city")
+        text=str(text).title() 
+        print("upper txt", text)
+        # print("city info",tracker.get_slot("city"))
+        places = GeoText(text)
+        cities = places.cities
+        print(places, cities, places.countries)
+        # Output: ['England', 'France']
+
+        # city = tracker.get_slot(cities[0])
+        dispatcher.utter_message(getWeather(cities[0]))
         return []
 
 class ActionGiveUnivInfo(Action):
@@ -169,7 +182,9 @@ class ActionSMS(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
-      
+
+        
+
         phone = Query_Db.retrieve_prof_phone_by_name(self=self,name_ = str(tracker.get_slot("profName")).lower())
         print(tracker.get_slot("profName"),tracker.get_slot("profMessage"))
         account_sid = "AC64c34eb4c59c3febc79e26819d37a1df"

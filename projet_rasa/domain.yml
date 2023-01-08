@@ -67,8 +67,8 @@ slots:
     type: text
     influence_conversation: false
     mappings:
-    - type: from_entity
-      entity: city
+    - type: from_text
+      intent: ask_city_weather
   
   profName:
     type: text
