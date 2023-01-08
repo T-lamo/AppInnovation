@@ -1,5 +1,8 @@
-models/
+projet_rasa/models/
 .rasa/
 venv/
 results/
 actions/__pycache__/
+db/__pycache__/
+models/__pycache__/
+socialisation/__pycache__/

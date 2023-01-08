@@ -1,46 +1,20 @@
-
 version: "3.1"
 
 stories:
 
-# - story: happy path 1
-#   steps:
-#   - intent: greet
-#   - action: utter_greet
-#   - intent: mood_great
-#   - action: utter_happy
-#   - intent: ask_schedule
-#   - action: action_give_schedule 
-#   - action: utter_ask_for_other_question
-#   - intent: deny
-#   - action: utter_goodbye
+- story: happy path 1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_great
+  - action: utter_happy
+  - intent: ask_schedule
+  - action: action_give_schedule 
+  - action: utter_ask_for_other_question
+  - intent: deny
+  - action: utter_goodbye
 
-# - story: happy path 2
-#   steps:
-#   - intent: greet
-#   - action: utter_greet
-#   - intent: mood_great
-#   - action: utter_happy
-#   - intent: ask_schedule
-#   - action: action_give_schedule 
-#   - action: utter_ask_for_other_question
-#   - intent: affirm
-#   - action: utter_goodbye
-
-# - story: happy path 3
-#   steps:
-#   - intent: ask_schedule
-#   - action: utter_ask_section
-#   - intent: give_section
-#   - slot_was_set:
-#     - section: "M1"
-#   - action: utter_ask_group
-#   - intent: give_group
-#   - slot_was_set:
-#     - group: "ALTERNANT"
-#   - action: action_give_schedule 
-
-- story: happy path 4
+- story: happy path 2
   steps:
   - intent: greet
   - action: utter_greet
@@ -52,7 +26,14 @@ stories:
   - intent: affirm
   - action: utter_goodbye
 
-- story: happy path 3
+- story: happy path greet 
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_great
+  - action: utter_happy
+
+- story: emploi du temps
   steps:
   - intent: ask_schedule
   - action: utter_ask_section
@@ -63,12 +44,9 @@ stories:
   - intent: give_group 
   - slot_was_set:
     - group: "ALTERNANT"
-  - action: action_give_hour
-  # - action: utter_greet
+  - action: action_give_schedule
 
-
-  
-- story: heure emplois
+- story: salles disponibles
   steps:
   - intent: ask_class_availlability
   - action: utter_ask_class_availlable_date
@@ -76,11 +54,47 @@ stories:
   - slot_was_set:
     - time: value
   - action: action_give_empty_class
- 
-- story: hour path
+
+- story: weather happy path
   steps:
-  - intent: give_hour
-  - action: action_give_hour
+  - intent: ask_city_weather
+  - slot_was_set:
+    - city: Paris
+  - action: action_give_weather
+
+- story: univ info path
+  steps:
+  - intent: ask_univ_info
+  - action: action_give_univ_info
+
+- story: univ info horaire acceuil
+  steps:
+  - intent: ask_horaire_acceuil
+  - action: action_give_univ_horaire_acceuil
+
+- story: univ info service  accompagnement
+  steps:
+  - intent: ask_service_accompagnement
+  - action: action_give_addresse_service_accompagnement
+
+- story: univ info responsable stage
+  steps:
+  - intent: ask_responsable_stage
+  - action: utter_give_responsable_stage
+
+- story: univ info responsable alternance
+  steps:
+  - intent: ask_responsable_alternance
+  - action: utter_give_responsable_alternance
+
+- story: heure classe disponibilite
+  steps:
+  - intent: ask_class_availlability
+  - action: utter_ask_class_availlable_date
+  - intent: give_date
+  - slot_was_set:
+    - time: value
+  - action: action_give_empty_class
 
 - story: sad path 1
   steps:
@@ -102,3 +116,19 @@ stories:
   - intent: deny
   - action: utter_goodbye
 
+- story: joke
+  steps:
+  - intent: ask_joke
+  - action: action_joke
+
+- story: get message SMS
+  steps:
+  - intent: ask_send_message
+  - slot_was_set:
+    - profName: value
+  - action: utter_ask_message
+  - intent: give_message
+  - slot_was_set:
+    - profMessage: value
+  - action: action_SMS
+ 
